@@ -1,0 +1,12 @@
+{
+  "name": "portfolio-tracker",
+  "displayName": "portfolio-tracker",
+  "expo": {
+    "name": "portfolio-tracker",
+    "slug": "portfolio-tracker",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
