@@ -1,15 +1,29 @@
 import React, { useState, useEffect, useContext } from "react";
-import { NavigationContainer, RouteProp } from "@react-navigation/native";
-import { ActivityIndicator } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Center } from "./Center";
 import { AuthContext } from "./AuthProvider";
-import { AppTabs } from "./AppTabs";
+
+import { SplashScreen } from "./screens/SplashScreen";
+import { PortfolioStack } from "./screens/PortfolioStack";
+
+import * as Font from 'expo-font';
 
 
 export const Routes= ({}) => {
     const { user, loadUser, createUser} = useContext(AuthContext);
-    const [loading, setLoading] = useState(true);
+    const [userLoaded, setUserLoading] = useState(false);
+    const [fontsLoaded, setFontLoading] = useState(false);
+
+
+    async function loadFonts() {
+        await Font.loadAsync({
+            Ubuntu: {
+                uri: require('../assets/font/Ubuntu-Regular.ttf'),
+                display: Font.FontDisplay.FALLBACK,
+            },
+        });
+    }
+
 
     useEffect(() => {
         // check if the user is available
@@ -19,33 +33,36 @@ export const Routes= ({}) => {
                 // load the data
                 loadUser()
                 .then(() => {
-                    setLoading(false);
+                    setUserLoading(true);
                 });
             }
             else{
                 // Create User
                 createUser()
                 .then(() => {
-                    setLoading(false);
+                    setUserLoading(true);
                 });
             }
         })
         .catch(err => {
             console.log(err);
         });
+
+        loadFonts()
+        .then(() => {
+            setFontLoading(true);
+        });
     }, []);
 
-    if (loading) {
+    if (!userLoaded || !fontsLoaded) {
         return (
-            <Center>
-                <ActivityIndicator size="large" />
-            </Center>
+            <SplashScreen />
         );
     }
 
     return (
         <NavigationContainer>
-            <AppTabs />
+            <PortfolioStack />
         </NavigationContainer>
     );
 };

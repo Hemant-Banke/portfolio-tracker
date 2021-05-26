@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { TouchableOpacity, Text, Button } from "react-native";
-import { Center } from "./Center";
+import { Center } from "./SplashScreen";
 import { StackNavigationState, TypedNavigator } from "@react-navigation/native";
 
 function Product({ route, navigation }) {

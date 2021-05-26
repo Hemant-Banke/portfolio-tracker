@@ -16,8 +16,8 @@ export const AppTabs = ({}) => {
                 tabBar={(props) => <BottomTabBar {...props} />}
             >
                 <Tabs.Screen name="Home" component={HomeStack} />
-                <Tabs.Screen name="Comment" component={SearchStack} />
-                <Tabs.Screen name="Settings" component={SearchStack} />
+                {/* <Tabs.Screen name="Comment" component={SearchStack} />
+                <Tabs.Screen name="Settings" component={SearchStack} /> */}
             </Tabs.Navigator>
         </View>
     );

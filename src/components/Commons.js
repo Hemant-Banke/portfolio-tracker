@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
+import { COLORS } from '../styles/colours';
 
 
 /**
@@ -7,7 +8,7 @@ import { View, Text } from "react-native";
  */
 export const Background = ({ children }) => {
     return (
-        <View style={{flex: 1}} >
+        <View style={{flex: 1, backgroundColor: COLORS.bg}} >
             {children}
         </View>
     );
@@ -45,11 +46,28 @@ export const Center = ({ children }) => {
 
 
 /**
+ * Text
+ */
+export const TextNode = ({ children, style }) => {
+    return (
+        <Text style={[
+            style,
+            {
+                fontFamily: 'Ubuntu'
+            }
+        ]} >
+            {children}
+        </Text>
+    );
+};
+
+
+/**
  * Large Heading
  */
 export const Heading = ({ children, style }) => {
     return (
-        <Text style={[
+        <TextNode style={[
             style,
             {
                 fontWeight: "bold",
@@ -57,6 +75,6 @@ export const Heading = ({ children, style }) => {
             }
         ]} >
             {children}
-        </Text>
+        </TextNode>
     );
 };
