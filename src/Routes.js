@@ -6,7 +6,7 @@ import { AuthContext } from "./AuthProvider";
 import { SplashScreen } from "./screens/SplashScreen";
 import { PortfolioStack } from "./screens/PortfolioStack";
 
-// import * as Font from 'expo-font';
+import * as Font from 'expo-font';
 
 
 export const Routes= ({}) => {
@@ -15,14 +15,14 @@ export const Routes= ({}) => {
     const [fontsLoaded, setFontLoading] = useState(false);
 
 
-    // async function loadFonts() {
-    //     await Font.loadAsync({
-    //         Ubuntu: {
-    //             uri: require('../assets/font/Ubuntu-Regular.ttf'),
-    //             display: Font.FontDisplay.FALLBACK,
-    //         },
-    //     });
-    // }
+    async function loadFonts() {
+        await Font.loadAsync({
+            Ubuntu: {
+                uri: require('../assets/font/Ubuntu-Regular.ttf'),
+                display: Font.FontDisplay.FALLBACK,
+            },
+        });
+    }
 
 
     useEffect(() => {
@@ -48,10 +48,10 @@ export const Routes= ({}) => {
             console.log(err);
         });
 
-        // loadFonts()
-        // .then(() => {
-        //     setFontLoading(true);
-        // });
+        loadFonts()
+        .then(() => {
+            setFontLoading(true);
+        });
     }, []);
 
     if (!userLoaded || !fontsLoaded) {
