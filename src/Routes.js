@@ -6,7 +6,7 @@ import { AuthContext } from "./AuthProvider";
 import { SplashScreen } from "./screens/SplashScreen";
 import { PortfolioStack } from "./screens/PortfolioStack";
 
-import * as Font from 'expo-font';
+// import * as Font from 'expo-font';
 
 
 export const Routes= ({}) => {
